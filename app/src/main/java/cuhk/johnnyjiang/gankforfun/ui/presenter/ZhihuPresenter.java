@@ -2,6 +2,7 @@ package cuhk.johnnyjiang.gankforfun.ui.presenter;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -106,7 +107,9 @@ public class ZhihuPresenter extends BasePresenter<IZhihuView> {
                         zhihuAdapter.updateLoadStatus(zhihuAdapter.LOAD_PULL_TO);
                         isLoadMore = true;
                         zhihuAdapter.updateLoadStatus(zhihuAdapter.LOAD_MORE);
-                        new Handler().postDelayed(() -> getBeforeNews(time), 2000);
+                        new Handler().postDelayed(() -> getBeforeNews(time), 1000);
+                        mRecylerView.setFocusable(false);
+                        mRecylerView.smoothScrollBy(0, 1000);
                     }
                 }
             }

@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <in.srain.cube.views.ptr.PtrFrameLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,6 +15,7 @@
             android:background="@color/gery">
 
         </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+
+    </in.srain.cube.views.ptr.PtrFrameLayout>
 
 </LinearLayout>

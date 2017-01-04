@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
-        bottomNavigationBar.setAutoHideEnabled(false);
+        bottomNavigationBar.setAutoHideEnabled(true);
         bottomNavigationBar
                 .addItem(new BottomNavigationItem(R.mipmap.zhihu, "Zhihu"))
                 .addItem(new BottomNavigationItem(R.mipmap.gank, "Gank"))
