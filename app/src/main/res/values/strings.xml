@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GankForFun</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="load_more">加载更多...</string>
+
+    <string name="bottom1">Bottom1</string>
+    <string name="bottom2">Bottom2</string>
+    <string name="bottom3">Bottom3</string>
+    <string name="bottom4">Bottom4</string>
+</resources>
