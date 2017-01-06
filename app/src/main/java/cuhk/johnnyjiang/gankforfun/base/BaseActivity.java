@@ -27,8 +27,6 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     private AppBarLayout mAppBarLayout;
     private Toolbar mToolbar;
     protected T mPresenter;
-//    private SwipeRefreshLayout mSwipeRefreshLayout;
-    private boolean isRequestDataRefresh = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +38,17 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         setContentView(provideContentViewId());
         ButterKnife.bind(this);
 
+        initToolbar();
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+    }
+
+    public void initToolbar() {
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         if (mAppBarLayout != null && mToolbar !=null) {
@@ -54,49 +63,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
                 Log.i("Error","Can not back.");
             }
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-//        if (isSetRefresh()) {
-//            setupSwipeRefresh();
-//;        }
     }
-
-//    private void setupSwipeRefresh() {
-//        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
-//        if (mSwipeRefreshLayout != null) {
-//            mSwipeRefreshLayout.setColorSchemeResources(R.color.refresh_progress_1,
-//                    R.color.refresh_progress_2,R.color.refresh_progress_3);
-//            mSwipeRefreshLayout.setProgressViewOffset(true, 0,
-//                    (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24,
-//                            getResources().getDisplayMetrics()));
-//            mSwipeRefreshLayout.setOnRefreshListener(this::requestDataRefresh);
-//        }
-//    }
-//
-//    public void requestDataRefresh() {
-//        isRequestDataRefresh = true;
-//    }
-//
-//    public void setRefresh(boolean requestDataRefresh) {
-//        if (mSwipeRefreshLayout == null) {
-//            return;
-//        }
-//        if (!requestDataRefresh) {
-//            isRequestDataRefresh = false;
-//            mSwipeRefreshLayout.postDelayed(() -> {
-//                if (mSwipeRefreshLayout != null) {
-//                    mSwipeRefreshLayout.setRefreshing(false);
-//                }
-//            }, 1000);
-//        } else {
-//            mSwipeRefreshLayout.setRefreshing(true);
-//        }
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -127,8 +94,6 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         intent.addCategory(Intent.CATEGORY_HOME);
         startActivity(intent);
     }
-
-    public Boolean isSetRefresh() { return false; }
 
     protected abstract T createPresenter();
 

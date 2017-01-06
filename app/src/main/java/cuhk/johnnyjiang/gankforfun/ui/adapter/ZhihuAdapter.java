@@ -1,6 +1,7 @@
 package cuhk.johnnyjiang.gankforfun.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,7 @@ import cuhk.johnnyjiang.gankforfun.R;
 import cuhk.johnnyjiang.gankforfun.bean.Zhihu.ZhihuNewsList;
 import cuhk.johnnyjiang.gankforfun.bean.Zhihu.ZhihuStory;
 import cuhk.johnnyjiang.gankforfun.bean.Zhihu.ZhihuTopStory;
+import cuhk.johnnyjiang.gankforfun.ui.activity.ZhihuWebActivity;
 import cuhk.johnnyjiang.gankforfun.util.ScreenUtils;
 import cuhk.johnnyjiang.gankforfun.widget.TopViewPager;
 
@@ -127,6 +129,7 @@ public class ZhihuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public void bindItem(List<ZhihuTopStory> list) {
             vpTopZhihu.init(list, tvVpZhihu, item -> {
+                context.startActivity(ZhihuWebActivity.newIntent(context, item.getId()));
                 //点击跳转ZhihuWebActivity
             });
         }
@@ -156,7 +159,7 @@ public class ZhihuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvZhihuNewsTitle.setText(zhihuStory.getTitle());
             String[] images = zhihuStory.getImages();
             Glide.with(context).load(images[0]).centerCrop().into(tvZhihuImage);
-            //cardStory.setOnClickListener(v -> context.startActivities());
+            cardStory.setOnClickListener(v -> context.startActivity(ZhihuWebActivity.newIntent(context, zhihuStory.getId())));
 
         }
     }
