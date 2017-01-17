@@ -9,11 +9,13 @@
     </style>
 
     <!--Toolbar 样式-->
-    <style name="ToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="colorControlNormal">@color/white</item>
-        <item name="android:textSize">14sp</item>
-    </style>
+    <!--<style name="ToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">-->
+        <!--<item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>-->
+    <!--</style>-->
+
+    <!--<style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">-->
+        <!--<item name="android:src">@drawable/ic_menu_share</item>-->
+    <!--</style>-->
 
     <!--MainActivity-->
     <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">

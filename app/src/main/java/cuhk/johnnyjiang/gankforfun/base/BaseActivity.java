@@ -40,17 +40,12 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
 
         initToolbar();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
     }
 
     public void initToolbar() {
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle(R.string.empty);
         if (mAppBarLayout != null && mToolbar !=null) {
             setSupportActionBar(mToolbar);
             if (canBack()) {
@@ -63,19 +58,6 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
                 Log.i("Error","Can not back.");
             }
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                finish();
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
